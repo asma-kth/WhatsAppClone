@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var database = FirebaseDatabase.getInstance()
-        var myRef = database.getReference("messages")
-
-        myRef.setValue("Hello, World!")
+        var myRef = database.getReference("messages").push()
+var employee= Employee("asma", "Android Developer", "iverson road")
+        myRef.setValue(employee)
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
@@ -37,4 +37,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+    data class Employee (var name:String, var position:String, var adress:String )
 }
